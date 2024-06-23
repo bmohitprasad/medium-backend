@@ -23,7 +23,7 @@ export const Appbar = ()=>{
             <Avatar size={"big"} name = {authorName}/>
             <Link to={`/signin`} onClick={
                 () => {
-                    Storage.removeItem('authToken'); 
+                    localStorage.removeItem('authToken'); 
                     sessionStorage.removeItem('authToken'); 
                   }
             }>
