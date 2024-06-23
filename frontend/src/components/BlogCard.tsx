@@ -31,10 +31,10 @@ export const BlogCard = ({
                 {formatDateString(publishedDate)}, {time(publishedDate)}
             </div>  
         </div>
-        <div className="text-xl font-bold pt-2">
+        <div className="text-xl font-bold pt-2 font-serif">
             {title}
         </div>
-        <div className="text-md font-light">
+        <div className="text-md font-light ">
             {content.slice(0,100) + "..."}
         </div>
         <div className="text-slate-500 text-sm font-light pt-4">
