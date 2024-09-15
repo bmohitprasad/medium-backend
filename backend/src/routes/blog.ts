@@ -56,11 +56,10 @@ blogRouter.post('/', async (c) => {
             title: body.title,
             content: body.content,
             authorId: Number(authorId),
-            date: body.date,
+            date: body.date
         }
     })
 
-    console.log(blog)
     return c.json({
         id: blog.id
     })
@@ -91,8 +90,6 @@ blogRouter.put('/', async (c) => {
         }
     })
 
-    console.log(blog)
-
     return c.json({
         id: blog.id
     })
@@ -103,6 +100,7 @@ blogRouter.get('/bulk', async (c) => {
     const prisma = new PrismaClient({
         datasourceUrl: c.env.DATABASE_URL,
     }).$extends(withAccelerate())
+    
     const blogs = await prisma.blog.findMany({
         select: {
             content: true,
@@ -114,10 +112,12 @@ blogRouter.get('/bulk', async (c) => {
                     name: true
                 }
             }
+        },
+        orderBy: {
+            date: 'desc' // This orders the blogs by date in descending order (newest first)
         }
     });
 
-    console.log(blogs)
     return c.json({
         blogs
     })
